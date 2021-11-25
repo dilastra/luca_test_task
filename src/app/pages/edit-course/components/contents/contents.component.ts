@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ContentsItemType } from 'src/app/models/contents-item-type.enum';
+import { ContentsItemType } from '../../../../../app/models/contents-item-type.enum';
 
 @Component({
   selector: 'app-contents',

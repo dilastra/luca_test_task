@@ -1,10 +1,9 @@
-import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
-import { DurationUnit } from 'src/app/models/duration-unit.enum';
-import { DataService } from 'src/app/services/data/data.service';
+import { DurationUnit } from '../../models/duration-unit.enum';
+import { DataService } from '../../services/data/data.service';
 
 @Component({
   selector: 'app-edit-course',
