@@ -1,0 +1,4 @@
+<div *ngFor="let course of courses$ | async" class="course__container">
+  <h3>{{ course.name }}</h3>
+  <button [routerLink]="['/editor', course.id]">Редактировать</button>
+</div>

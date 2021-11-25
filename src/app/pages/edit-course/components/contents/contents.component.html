@@ -1,0 +1,40 @@
+<ng-container [formGroup]="formGroup">
+  <div class="contents__section" formArrayName="contents">
+    <h2 class="contents__title">Контент</h2>
+    <div
+      class="contents__form-controls-container"
+      *ngFor="let content of contentsFormArray.controls; index as controlName"
+      formGroupName="{{ controlName }}"
+    >
+      <div class="contents__form-control-container">
+        <label class="contents__form-control-label">
+          Название
+          <input
+            type="text"
+            class="contents__form-control"
+            formControlName="name"
+          />
+        </label>
+      </div>
+      <div class="contents__form-control-container">
+        <label class="contents__form-control-label">
+          Тип
+          <select class="contents__form-control" formControlName="type">
+            <option
+              *ngFor="let contentItemType of contentsItemType | keyvalue"
+              [value]="contentItemType.value"
+            >
+              {{ contentItemType.key }}
+            </option>
+          </select>
+        </label>
+      </div>
+      <div class="contents__delete-button-container">
+        <button (click)="deleteContent(controlName)">Удалить</button>
+      </div>
+    </div>
+    <div class="contents__add-button-container">
+      <button (click)="addContent()">Добавить</button>
+    </div>
+  </div>
+</ng-container>

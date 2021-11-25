@@ -1,0 +1,8 @@
+.course__container {
+  display: flex;
+  align-items: center;
+
+  & > h3 {
+    margin-right: 16px;
+  }
+}

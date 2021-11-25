@@ -1,0 +1,43 @@
+<div [formGroup]="formGroup">
+  <div class="plans__section" formArrayName="plans">
+    <h2 class="plans__title">Планы</h2>
+    <div
+      class="plans__form-controls-container"
+      *ngFor="let plan of plansFormArray.controls; index as controlName"
+      formGroupName="{{ controlName }}"
+    >
+      <div class="plans__form-controls">
+        <div class="plans__form-control-container">
+          <label class="plans__form-control-label">
+            Название
+            <input
+              type="text"
+              class="plans__form-control"
+              formControlName="name"
+            />
+          </label>
+        </div>
+        <div class="plans__form-control-container">
+          <label class="plans__form-control-label">
+            Цена
+            <input
+              type="text"
+              class="plans__form-control"
+              formControlName="price"
+            />
+          </label>
+        </div>
+        <div class="plans__delete-button-container">
+          <button (click)="deletePlan(controlName)">Удалить</button>
+        </div>
+      </div>
+      <app-advantages
+        [formGroup]="getFormGroup(plan)"
+        [advantagesFormArray]="getAdvantagesFormArray(plan)"
+      ></app-advantages>
+    </div>
+    <div class="plans__add-button-container">
+      <button (click)="addPlan()">Добавить</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div [formGroup]="formGroup">
+  <ng-container formArrayName="advantages">
+    <div
+      class="advantages__form-controls-container"
+      *ngFor="let plan of advantagesFormArray.controls; index as controlName"
+      formGroupName="{{ controlName }}"
+    >
+      <div class="advantages__form-control-container">
+        <label class="advantages__form-control-label">
+          Название
+          <input
+            type="text"
+            class="advantages__form-control"
+            formControlName="title"
+          />
+        </label>
+      </div>
+      <div class="advantages__form-control-checkbox-container">
+        <label class="advantages__form-control-checkbox-label">
+          Доступность
+          <input
+            type="checkbox"
+            class="advantages__form-control-checkbox"
+            formControlName="available"
+          />
+        </label>
+      </div>
+      <div class="advantages__delete-button-container">
+        <button (click)="deleteAdvantages(controlName)">Удалить</button>
+      </div>
+    </div>
+    <div class="advantages__add-button-container">
+      <button (click)="addAdvantages()">Добавить</button>
+    </div>
+  </ng-container>
+</div>

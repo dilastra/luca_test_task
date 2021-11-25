@@ -1,0 +1,116 @@
+<div class="edit-course__container">
+  <div class="edit-course__title-container">
+    <h1 class="edit-course__title">Редактирование курса</h1>
+  </div>
+  <div class="edit-course__form-container">
+    <form [formGroup]="courseForm">
+      <div class="edit-course__section">
+        <div class="edit-course__form-control-container">
+          <label class="edit-course__form-control-label">
+            Название курса
+            <input
+              type="text"
+              class="edit-course__form-control"
+              formControlName="name"
+            />
+          </label>
+        </div>
+      </div>
+      <div class="edit-course__section" formGroupName="author">
+        <h2 class="edit-course__title">Автор</h2>
+        <div class="edit-course__form-controls-container">
+          <div class="edit-course__form-control-container">
+            <label class="edit-course__form-control-label">
+              Фамилия
+              <input
+                type="text"
+                class="edit-course__form-control"
+                formControlName="lastName"
+              />
+            </label>
+          </div>
+          <div class="edit-course__form-control-container">
+            <label class="edit-course__form-control-label">
+              Имя
+              <input
+                type="text"
+                class="edit-course__form-control"
+                formControlName="firstName"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="edit-course__section" formGroupName="duration">
+        <h2 class="edit-course__title">Продолжительность</h2>
+        <div class="edit-course__form-controls-container">
+          <div class="edit-course__form-control-container">
+            <label class="edit-course__form-control-label">
+              Значение
+              <input
+                type="number"
+                class="edit-course__form-control"
+                formControlName="value"
+              />
+            </label>
+          </div>
+          <div class="edit-course__form-control-container">
+            <label class="edit-course__form-control-label">
+              Единицы измерения
+              <select
+                type="date"
+                class="edit-course__form-control"
+                formControlName="unit"
+              >
+                <option
+                  *ngFor="let durationUnit of durationUnits | keyvalue"
+                  [value]="durationUnit.value"
+                >
+                  {{ durationUnit.key }}
+                </option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <app-contents
+        [formGroup]="courseForm"
+        [contentsFormArray]="contentsFormArray"
+      ></app-contents>
+
+      <app-plans
+        [formGroup]="courseForm"
+        [plansFormArray]="plansFormArray"
+      ></app-plans>
+      <div class="edit-course__section" formGroupName="sales">
+        <h2 class="edit-course__title">Период действия</h2>
+        <div class="edit-course__form-controls-container">
+          <div class="edit-course__form-control-container">
+            <label class="edit-course__form-control-label">
+              Начало
+              <input
+                type="date"
+                class="edit-course__form-control"
+                formControlName="start"
+              />
+            </label>
+          </div>
+          <div class="edit-course__form-control-container">
+            <label class="edit-course__form-control-label">
+              Конец
+              <input
+                type="date"
+                class="edit-course__form-control"
+                formControlName="end"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="edit-course__buttons-container">
+      <button routerLink="/">Назад</button>
+      <button (click)="saveCourse()">Сохранить</button>
+    </div>
+  </div>
+</div>
